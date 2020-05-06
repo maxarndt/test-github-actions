@@ -20,7 +20,7 @@ jobs:
       run: exit 1
 
     - name: 3rd step
-      if: ${{ steps.secondStep.outcome == 'failure' }}
+      if: ${{ steps.secondStep.outcome == 'Failure' }}
       run: echo "3rd step does run!"
 
     - name: 4th step
