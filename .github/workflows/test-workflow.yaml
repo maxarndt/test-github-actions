@@ -20,7 +20,7 @@ jobs:
       run: exit 1
 
     - name: 3rd step
-      if: ${{ steps.secondStep.outcome == 'Failure' }}
+      if: ${{ failure() && steps.secondStep.outcome == 'Failure' }}
       run: echo "3rd step does run!"
 
     - name: 4th step
@@ -31,3 +31,9 @@ jobs:
       env:
           STEPS_CONTEXT: ${{ toJson(steps.secondStep) }}
       run: echo "$STEPS_CONTEXT"
+
+    - name: 6th step
+      if: ${{ failure() }}
+      run: |
+        echo ${{ steps.secondStep.outcome }}
+        echo ${{ steps.secondStep.outcome == 'Failure' }}
