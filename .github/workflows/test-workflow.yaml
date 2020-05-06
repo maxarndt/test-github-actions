@@ -25,3 +25,9 @@ jobs:
 
     - name: 4th step
       run: echo "I should probably do not return anything"
+
+    - name: 5th step
+      if: ${{ failure() }}
+      env:
+          STEPS_CONTEXT: ${{ toJson(steps.secondStep) }}
+      run: echo "$STEPS_CONTEXT"
