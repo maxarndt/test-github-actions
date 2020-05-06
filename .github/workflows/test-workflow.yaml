@@ -13,11 +13,11 @@ jobs:
       uses: actions/checkout@v2
 
     - name: 1st step
-      run: exit 1
+      run: exit 0
 
     - name: 2nd step
       id: secondStep
-      run: exit 0
+      run: exit 1
 
     - name: 3rd step
       if: ${{ failure() && steps.secondStep.outcome == 'Failure' }}
