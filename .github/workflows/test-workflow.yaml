@@ -1,0 +1,27 @@
+name: test on failure of specific step
+
+on:
+  push:
+
+jobs:
+  test-failure-behaviour:
+    name: Test the failure behaviour
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: 1st step
+      run: echo "1st step"
+
+    - name: 2nd step
+      id: secondStep
+      run: exit 1
+
+    - name: 3rd step
+      if: ${{ steps.secondStep.outcome == 'failure' }}
+      run: echo "3rd step does run!"
+
+    - name: 4th step
+      run: echo "I should probably do not return anything"
