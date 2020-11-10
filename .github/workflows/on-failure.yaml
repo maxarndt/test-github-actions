@@ -1,7 +1,6 @@
 name: test on failure of specific step
 
-on:
-  push:
+on: workflow_dispatch
 
 jobs:
   test-failure-behaviour:
