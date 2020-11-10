@@ -1,0 +1,42 @@
+name: test recursive empty dir deletion
+
+on: push
+
+jobs:
+  test-rec-empty-dir-del:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Create files and folders
+      run: |
+        touch 1stTestFile
+        mkdir -p myDir/1stDir/a/b/c
+        mkdir -p myDir/2ndDir/a/b/c
+        mkdir -p myDir/3rdDir/a/b/c
+        touch myDir/1stDir/a/b/c/someFile
+        touch myDir/1stDir/a/b/someFile        
+
+    - name: recursive deletion
+      run: find myDir -type d -empty -delete
+
+    - name: list 1stDir
+      run: |
+        ls -la myDir
+        ls -la myDir/1stDir
+        ls -la myDir/1stDir/a
+        ls -la myDir/1stDir/a/b
+        ls -la myDir/1stDir/a/b/c
+
+    - name: list 2ndDir
+      run: |
+        ls -la myDir
+        ls -la myDir/2ndDir
+        ls -la myDir/2ndDir/a
+        ls -la myDir/2ndDir/a/b
+
+    - name: list 3rdDir
+      run: |
+        ls -la myDir
