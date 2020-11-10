@@ -17,7 +17,7 @@ jobs:
         mkdir -p myDir/2ndDir/a/b/c
         mkdir -p myDir/3rdDir/a/b/c
         touch myDir/1stDir/a/b/c/someFile
-        touch myDir/1stDir/a/b/someFile        
+        touch myDir/2ndDir/a/b/someFile        
 
     - name: recursive deletion
       run: find myDir -type d -empty -delete
