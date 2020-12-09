@@ -1,6 +1,6 @@
 name: simple deploy workflow
 
-on: workflow_dispatch
+on: deployment
 
 jobs:
   deploy:
@@ -10,6 +10,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+
+    - name: ls
+      run: ls -la
 
     - name: deploy
       run: |
