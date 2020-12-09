@@ -1,6 +1,6 @@
 name: test recursive empty dir deletion
 
-on: push
+on: workflow_dispatch
 
 jobs:
   test-rec-empty-dir-del:
