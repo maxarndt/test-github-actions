@@ -5,7 +5,7 @@ on: workflow_dispatch
 jobs:
   test-failure-behaviour:
     name: Test the failure behaviour
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout
